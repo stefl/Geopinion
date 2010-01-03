@@ -1,4 +1,4 @@
-class EntitiesController  < ResourceController::Base
+class EntitiesController < ResourceController::Base
       
     index.before do
       begin
