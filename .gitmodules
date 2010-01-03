@@ -1,0 +1,3 @@
+[submodule "vendor/gems/geoapi"]
+	path = vendor/gems/geoapi
+	url = git://github.com/steflewandowski/GeoAPI.git
