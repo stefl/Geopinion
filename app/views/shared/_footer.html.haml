@@ -1,0 +1,19 @@
+%ul#footer_navigation
+  %li
+    &copy; Stef
+      
+  %li.quiet
+    %a{:href=>"http://steflewandowski.com", :title=>"Built by Stef"}
+      ="Built by Stef"
+      
+  - if @rss_title && @rss_url
+    %li#rss= link_to :rss.l, @rss_url, {:title => @rss_title}
+
+
+  %li.rendered_at
+    = "Rendered #{Time.now}"
+  #li.geoapi
+    Using
+    = link_to "GeoAPI", "http://geoapi.com"
+  %li.open_source
+    = link_to 'GeoAPI source code', 'http://github.com/steflewandowski/geoapi'

@@ -1,0 +1,21 @@
+- @page_title = "New Entity"
+
+- form_for :entity, @entity, :url => { :action => "create" }  do |e|
+  %div
+    %label{:for=>"entity_name"}
+      Name
+    = e.text_field :name
+  
+
+  %div
+    %label{:for=>"entity_lng"}
+      Longitude
+    = e.text_field :lng, :value=>session[:lng]
+    
+  %div
+    %label{:for=>"entity_lat"}
+      Latitude
+    = e.text_field :lat, :value=>session[:lat]
+
+
+  = submit_tag "Create"

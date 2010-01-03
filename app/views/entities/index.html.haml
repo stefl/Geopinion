@@ -1,0 +1,6 @@
+- @page_title = "Entities"
+
+= render :partial=>"shared/map" 
+
+%ul#entities
+  = render :partial=>"entity", :collection=>@entities
