@@ -1,4 +1,4 @@
-class EntriesController < ApplicationController
+class EntriesController < ResourceController::Base
   
   index.wants.xml{
       @entities = parent_object.entries
