@@ -1,2 +1,2 @@
-require "lib/GeoAPI/lib/geoapi.rb"
+require "GeoAPI/lib/geoapi.rb"
 GeoAPI::GEOAPI_KEY = "p4MIOnORr3"
