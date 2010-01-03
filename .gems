@@ -3,4 +3,5 @@ compass
 crack
 httparty
 uuidtools
+steflewandowski-geoapi
 haml --version '>=2.2.16'
