@@ -1,4 +1,4 @@
-giraffesoft-resource_controller --lib=http://gems.github.com
+giraffesoft-resource_controller --source http://gems.github.com
 compass
 crack
 rest_client
