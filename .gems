@@ -3,3 +3,5 @@ compass
 crack
 httparty
 uuidtools
+haml
+sass
