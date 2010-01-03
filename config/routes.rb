@@ -5,6 +5,9 @@ ActionController::Routing::Routes.draw do |map|
     entity.resources :entries
   end
   
+  map.posts "/posts", :controller=>"base", :action=>"posts"
+  map.post "/posts/:id", :controller=>"base", :action=>"post"
+  
   map.home "/" , :controller => "base", :action=>"site_index"
   
   # Sample of regular route:

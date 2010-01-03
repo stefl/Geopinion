@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.txt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.txt</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.txt
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Jan 03 17:19:49 +0000 2010</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>posterous</h1>
+<p>
+<a
+href="http://github.com/jordandobson/Posterous/tree/master">github.com/jordandobson/Posterous/tree/master</a>
+</p>
+<h2>DESCRIPTION:</h2>
+<p>
+The <a href="../classes/Posterous.html">Posterous</a> gem provides posting
+to Posterous.com using your email, password, site id(if you have multiple
+sites) and your blog content. With this gem, you have access to add an
+entry on posterous by providing these options a title, body text, date,
+tags, set to autopost, set private, posted by source name and a posted by
+source link to <a href="../classes/Posterous.html">Posterous</a>. You can
+include no options, all options or anything in between.
+</p>
+<p>
+Posting images with posts, posting only images and pulling down your posts
+will be available very soon.
+</p>
+<h2>FEATURES/PROBLEMS:</h2>
+<ul>
+<li>All Fields are optional
+
+</li>
+<li>Media files are not yet implemented
+
+</li>
+<li>Posting Only, Reading &amp; Images are not yet included
+
+</li>
+<li>Check if a users email and password are a valid account
+
+</li>
+<li>Check if a user has a valid site
+
+</li>
+<li>Check if a specified site_id is valid for their account
+
+</li>
+<li>Get their primary Site ID
+
+</li>
+<li>This is very throughly tested
+
+</li>
+</ul>
+<h2>SYNOPSIS:</h2>
+<ol>
+<li>Instantiate your account
+
+<pre>
+ * You can provide just the email and password
+
+     account = Posterous::Client.new('email_address', 'password')
+
+ * Or you can provide the ID as a string or integer
+
+     account = Posterous::Client.new('email_address', 'password', 68710)
+     account = Posterous::Client.new('email_address', 'password', '68710')
+</pre>
+</li>
+<li>Get more info about the user&#8216;s account if you need it
+
+<pre>
+ * Check if the user is valid
+
+     account.valid_user?
+
+ * Check if the user has a site AND if you've entered a Site ID, check it's valid too
+
+     account.has_site?
+
+ * Get the users primary site ID (In case they have multiple sites)
+
+     account.primary_site
+
+ * Get a list of your sites and additional info
+
+     account.account_info
+</pre>
+</li>
+<li>Setup your post with any or all of these optional fields
+
+<pre>
+ * You can set your id at this point or at the begining when it's instantiated
+
+     account.site_id         = account.get_primary_site or specific site ID
+
+ * Set these optional fields
+
+     account.title           = &quot;My Title&quot;
+     account.body            = &quot;My Body Text&quot;
+     account.source          = &quot;Glue&quot;
+     account.source_url      = &quot;http://GlueNow.com&quot;
+     account.tags            = [&quot;Glue&quot;, &quot;Posterous&quot;, &quot;Ruby&quot;, &quot;Made By Squad&quot;]
+     account.date            = Time.now
+
+ * Call the set_to method with either :private or :autopost to apply that setting
+
+     account.set_to :private
+     account.set_to :autopost
+</pre>
+</li>
+<li>Add your post to Posterous.com
+
+<pre>
+ * Set this to a variable to work with the response
+
+     response = account.add_post
+</pre>
+</li>
+<li>You get a success or error hash back or nil
+
+<pre>
+ * Your response should look something like this if successful
+
+ response #=&gt; { &quot;rsp&quot; =&gt; { &quot;post&quot; =&gt; { &quot;title&quot;   =&gt; &quot;My Title&quot;, &quot;url&quot; =&gt; &quot;http://post.ly/dFW&quot;, &quot;id&quot; =&gt; &quot;848898&quot;, &quot;longurl&quot; =&gt; &quot;http://glue.posterous.com/687985&quot; },  &quot;stat&quot; =&gt; &quot;ok&quot; } }
+
+ * See the tests for this gem for failure responses and responses for other methods
+</pre>
+</li>
+</ol>
+<p>
+# MORE INFO
+</p>
+<pre>
+  * URL
+
+    http://posterous.com/api/newpost
+
+  * IMPLEMENTED FIELDS - All are optional
+
+    &quot;site_id&quot;     Optional. Id of the site to post to.
+    &quot;title&quot;       Optional. Title of post
+    &quot;body&quot;        Optional. Body of post
+    &quot;source&quot;      Optional. The name of your application or website
+    &quot;sourceLink&quot;  Optional. Link to your application or website
+    &quot;date&quot;        Optional. In GMT. Any parsable format. Cannot be in the future.
+    &quot;tags&quot;        Optional. Comma separate tags
+    &quot;autopost&quot;    Optional. 0 or 1.
+    &quot;private&quot;     Optional. 0 or 1.
+
+  * UNIMPLEMENTED FIELDS - These will likely be implemented in a future release
+
+    &quot;media&quot;       Optional. File data. Multiple files OK
+</pre>
+<h2>REQUIREMENTS:</h2>
+<ul>
+<li>HTTPparty, &amp; Mocha (For Tests)
+
+</li>
+</ul>
+<h2>INSTALL:</h2>
+<ul>
+<li>sudo gem install posterous -include-dependencies
+
+</li>
+</ul>
+<h2>LICENSE:</h2>
+<p>
+(The MIT License)
+</p>
+<p>
+Copyright (c) 2009 Jordan Dobson
+</p>
+<p>
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+&#8216;Software&#8217;), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
+</p>
+<p>
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+</p>
+<p>
+THE SOFTWARE IS PROVIDED &#8216;AS IS&#8217;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

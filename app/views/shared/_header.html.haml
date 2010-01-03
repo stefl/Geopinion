@@ -1,4 +1,4 @@
-%h1.logo
+%h1#logo
   
   Your
   = link_to "Geopinion", home_path
@@ -12,7 +12,12 @@
     = session[:lng]
     ,
     = session[:lat]
-  
-  
+    
+
 %h1.page_title
+  = unless @breadcrumb.blank?
+    %span#breadcrumb
+      = @breadcrumb
+      &raquo;
+      %br
   = page_title

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Posterous::Client)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/posterous.rb, line 32</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>, <span class="ruby-identifier">site_id</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">AuthError</span>, <span class="ruby-value str">'Either Username or Password is blank and/or not a string.'</span> <span class="ruby-keyword kw">if</span> \
+        <span class="ruby-operator">!</span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">pass</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">pass</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">basic_auth</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">pass</span>
+      <span class="ruby-ivar">@site_id</span> = <span class="ruby-identifier">site_id</span> <span class="ruby-value">? </span><span class="ruby-identifier">site_id</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">site_id</span>
+      <span class="ruby-ivar">@source</span> = <span class="ruby-ivar">@body</span> = <span class="ruby-ivar">@title</span> = <span class="ruby-ivar">@source_url</span> = <span class="ruby-ivar">@date</span> = <span class="ruby-ivar">@media</span> = <span class="ruby-ivar">@tags</span> = <span class="ruby-ivar">@autopost</span> = <span class="ruby-ivar">@private_post</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

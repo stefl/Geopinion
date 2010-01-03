@@ -1,8 +1,42 @@
-%h2
-  What do you think about Moseley and Kings Heath?
+#intro.box
+  %h2
+    We're Moseley Community Development Trust and we'd like to know
+    %br
+    %em
+      = link_to "How do you think our area could be better?", new_entity_path
 
-:plain  
-  <script src="http://www.intensedebate.com/widgets/mostComments/161609/10" defer="defer" type="text/javascript"></script>
+
+  %h3
+    All of the ideas added here will be sent to the Council as our response to their consultation. 
+  %ol
+    %li
+      Walk around
+    %li
+      Have an idea
+    %li
+      Add it here
+    %li
+      Discuss it
+
+.colone
+  .box
+    %h2
+      From the 
+      = link_to "blog", posts_path
   
-:plain
-  <script src="http://www.intensedebate.com/widgets/acctComment/161609/5" defer="defer" type="text/javascript"></script>
+    %ul#blog
+      = render :partial=>"posts/post", :collection=>@posts
+.coltwo
+  .box
+    %h2
+      Hot 
+      = link_to "ideas", entities_path
+    :plain  
+
+      <script src="http://www.intensedebate.com/widgets/mostComments/161609/10" defer="defer" type="text/javascript"></script>
+  
+  .box
+    %h2
+      Recently discussed
+    :plain
+      <script src="http://www.intensedebate.com/widgets/acctComment/161609/5" defer="defer" type="text/javascript"></script>

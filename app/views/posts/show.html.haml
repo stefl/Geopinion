@@ -1,0 +1,8 @@
+- @page_title = @post['title']
+- @breadcrumb = link_to "Blog Posts", posts_path
+
+#post_body
+  = @post['body']
+
+  #comments
+    = render :partial=>"shared/comments"

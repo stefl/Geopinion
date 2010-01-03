@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Posterous::Client#set_to
+is_singleton: false
+name: set_to
+params: (on)
+visibility: public

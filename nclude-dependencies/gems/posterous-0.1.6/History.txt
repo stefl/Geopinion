@@ -1,0 +1,30 @@
+=== 0.1.6 / 2009-06-11
+
+* 1 fix
+
+  * Fixed issue where specifying site ID while only having one site cause has_site? to fail
+
+=== 0.1.5 / 2009-06-03
+
+* 1 major enhancement
+
+  * Moved Everything into a module and updated tests
+
+=== 0.1.3 / 2009-06-01
+
+* 1 major enhancement
+
+  * Updated Readme and DRYed up a method to use symbols
+
+=== 0.1.2 / 2009-05-29
+
+* 1 major enhancement
+
+  * Updated the class to accept date, private, autopost, tags
+
+=== 0.1.0 / 2009-05-19
+
+* 1 major enhancement
+
+  * Birthday!
+  

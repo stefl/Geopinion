@@ -62,12 +62,20 @@ class EntitiesController < ResourceController::Base
       
       setup_map
       
+      @entities = Entity.search({:lat=>@entity.latitude, :lng=>@entity.longitude, :type=>"user-entity"})
+      
       @map.center = GoogleMap::Point.new(@entity.latitude, @entity.longitude)
       
       @map.markers << GoogleMap::Marker.new(  :map => @map, 
                                               :lat => @entity.latitude, 
                                               :lng => @entity.longitude,
                                               :html => @entity.name)
+      
+      unless @entities.blank?
+        @entities.each do |entity|
+          @map.markers << GoogleMap::Marker.new(  :map => @map, :lat => entity.latitude, :lng => entity.longitude, :html => entity.name) unless entity.latitude.blank? || entity.longitude.blank? 
+        end
+      end
                                                  
       # Alternative method for polylines:
       
