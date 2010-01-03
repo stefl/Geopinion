@@ -1,6 +1,5 @@
 giraffesoft-resource_controller --source http://gems.github.com
 compass
 crack
-rest_client
 httparty
 uuidtools
