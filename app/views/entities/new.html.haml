@@ -1,21 +1,28 @@
 - @page_title = "Add your idea"
 
+= render :partial=>"shared/map" 
+%h3{:style=>"margin-top: -4em; margin-left: 1.5em;"}
+  Double-click on the map
+
+  
+- content_for :scripts do
+  :javascript
+    GEvent.addListener(google_map,"dblclick", function(overlay, latlng) {     
+      if (latlng) { 
+        var myHtml = "Your idea will be placed here";
+        map.openInfoWindow(latlng, myHtml);
+      }
+    });
 - form_for :entity, @entity, :url => { :action => "create" }  do |e|
-  %div
+  %div      
+      
     %label{:for=>"entity_name"}
       My idea is
-    = e.text_field :name
-  
-
-  %div
-    %label{:for=>"entity_lng"}
-      Longitude
-    = e.text_field :lng, :value=>session[:lng]
+    = e.text_field :name, :style=>"width:90%;"
     
-  %div
-    %label{:for=>"entity_lat"}
-      Latitude
-    = e.text_field :lat, :value=>session[:lat]
+    = e.hidden_field :lng, :value=>session[:lng]
+
+    = e.hidden_field :lat, :value=>session[:lat]
 
 
   = submit_tag "Create"

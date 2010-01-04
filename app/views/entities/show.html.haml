@@ -3,7 +3,10 @@
 
 /= render :partial=>"geometry/geometry", :object=>@entity.geom
 
+= render :partial =>"shared/new_idea_button"
+  
 = render :partial=>"shared/map" 
+
 
 - unless @entity.flickr_view_entries.blank?
   %h2

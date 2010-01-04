@@ -1,5 +1,8 @@
 class EntitiesController < ResourceController::Base
       
+    include ActionView::Helpers::PrototypeHelper
+    include ActionView::Helpers::JavaScriptHelper
+    
     index.before do
       begin
         @entities = Entity.search({:lat=>session[:lat], :lng=>session[:lng], :type=>"user-entity"})
@@ -19,12 +22,12 @@ class EntitiesController < ResourceController::Base
       
       setup_map
       
-      @map.center = GoogleMap::Point.new(session[:lng], session[:lat])
-      
+      @map.center = GoogleMap::Point.new(session[:lat], session[:lng])
+      @map.zoom = 14
       
       unless @entities.blank?
         @entities.each do |entity|
-          @map.markers << GoogleMap::Marker.new(  :map => @map, :lat => entity.latitude, :lng => entity.longitude, :html => entity.name) unless entity.latitude.blank? || entity.longitude.blank? 
+          @map.markers << GoogleMap::Marker.new(  :map => @map, :lat => entity.latitude, :lng => entity.longitude, :html => "<a href='/entities/#{entity.id}'>#{entity.name}</a>") unless entity.latitude.blank? || entity.longitude.blank? 
         end
       end
     end
@@ -33,6 +36,33 @@ class EntitiesController < ResourceController::Base
     index.wants.json{
       render :json=>@entities.to_json
     }
+    
+    new_action.wants.html{
+      setup_map
+      
+      @map.center = GoogleMap::Point.new(session[:lng], session[:lat])
+      @map.double_click_zoom = false
+      @map.inject_on_load = 'GEvent.addListener(google_map,"dblclick", function(overlay, latlng) {     
+        if (latlng) { 
+          var myHtml = "My idea is for here: " + latlng.lat() + "," + latlng.lng();
+          
+          $("#entity_lat").val(latlng.lat());
+          $("#entity_lng").val(latlng.lng());
+          
+          google_map.openInfoWindow(latlng, myHtml);
+        }
+      });'
+      
+      @map.zoom = 16
+      
+    }
+    
+    def locate
+      session[:lat] = params[:lat].to_f
+      session[:lng] = params[:lng].to_f
+      
+      render :text=>true
+    end
     
     def create
       @entity = Entity.create_at_lat_lng(params[:entity])
@@ -54,7 +84,7 @@ class EntitiesController < ResourceController::Base
       @map = GoogleMap::Map.new
       @map.controls = [ :large, :scale, :type ]
       @map.double_click_zoom = true
-      @map.zoom = 14
+      
     end
     
     show.wants.html{
@@ -70,10 +100,12 @@ class EntitiesController < ResourceController::Base
                                               :lat => @entity.latitude, 
                                               :lng => @entity.longitude,
                                               :html => @entity.name)
+                                              
+      @map.zoom = 16
       
       unless @entities.blank?
         @entities.each do |entity|
-          @map.markers << GoogleMap::Marker.new(  :map => @map, :lat => entity.latitude, :lng => entity.longitude, :html => entity.name) unless entity.latitude.blank? || entity.longitude.blank? 
+          @map.markers << GoogleMap::Marker.new(  :map => @map, :lat => entity.latitude, :lng => entity.longitude, :html => "<a href='/entities/#{entity.id}'>#{entity.name}</a>") unless entity.latitude.blank? || entity.longitude.blank? 
         end
       end
                                                  

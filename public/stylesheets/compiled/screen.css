@@ -97,11 +97,19 @@ form.bp input.text, form.bp input.title { width: 300px; }
 form.bp textarea { width: 390px; height: 250px; }
 
 body { margin: 0 auto; background-color: #ded; }
-body a { color: #00aa99 !important; background-color: white; }
+body a { color: #00aa99 !important; background-color: white; padding: 0.2em; }
 body a:visited { color: #00aa99 !important; }
-body h2 em { font-weight: bold; }
-body .box { margin-top: 1.5em; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
-body #intro { background-color: #ddffee; margin-top: 0; padding: 3em; border-radius: 3em; -moz-border-radius: 3em; -webkit-border-radius: 3em; }
+body .box { margin-top: 1.5em; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding-bottom: 1.5em; }
+body #add_your_idea { margin-top: -6em; }
+body #flash { margin-top: -3em; float: left; font-size: 125%; padding: 0.5em; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border: 0px; }
+body #flash.notice { color: green; background-color: #afa; }
+body #flash.error { color: red; background-color: #faa; }
+body #intro { background-color: #eee; margin-top: 0; padding: 3em; border-radius: 3em; -moz-border-radius: 3em; -webkit-border-radius: 3em; }
+body #intro h2 { line-height: 200%; }
+body #intro h2 a { font-weight: bold; color: black !important; text-decoration: none; font-size: 125%; }
+body #intro .walkthrough { list-style-type: decimal !important; list-style-position: inside; margin: 0; padding: 0; text-indent: 0; }
+body #intro .walkthrough li { list-style-type: decimal !important; list-style-position: inside; display: inline; font-weight: bold; margin: 0; padding: 0; text-indent: 0; background-color: #cdc; padding: 1em; font-size: 100%; display: inline; float: left; margin-right: 10px; width: 150px; }
+* html body #intro .walkthrough li { overflow-x: hidden; }
 body #logo { padding-top: 1.5em; margin-left: 1.5em; display: block; }
 body #breadcrumb, body #logo { line-height: 150%; }
 body #breadcrumb a, body #logo a { background-color: transparent; border-bottom: 1px dotted #00aa99; text-decoration: none; }
@@ -110,7 +118,7 @@ body .container { width: 910px; margin: 0 auto; overflow: hidden; display: inlin
 body .container { display: block; }
 body #header, body #footer { display: inline; float: left; margin-right: 10px; width: 910px; }
 * html body #header, * html body #footer { overflow-x: hidden; }
-body #header .page_title { margin-left: 1.5em; display: block; }
+body #header .page_title { margin-left: 1.5em; display: block; font-weight: bold; }
 body #footer { margin-top: 1.5em; padding-top: 1.5em; }
 body #footer #footer_navigation li { display: inline; }
 body #comments { min-height: 300px; margin-bottom: 3em; }
@@ -121,6 +129,7 @@ body #content .colone { display: inline; float: left; margin-right: 0; width: 37
 * html body #content .colone { overflow-x: hidden; }
 body #content .coltwo { display: inline; float: left; margin-right: 0; width: 370px; }
 * html body #content .coltwo { overflow-x: hidden; }
+body #content .indent { padding-left: 1.5em; }
 body #content form { font-size: 150%; padding: 1.5em; }
 body #content form input { padding: 0.75em; font-size: 150%; }
 body #content form label { width: 200px; display: block; }

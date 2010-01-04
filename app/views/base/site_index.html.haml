@@ -2,23 +2,31 @@
   %h2
     We're Moseley Community Development Trust and we'd like to know
     %br
-    %em
-      = link_to "How do you think our area could be better?", new_entity_path
+    = link_to "How do you think our area could be better?", new_entity_path
 
 
-  %h3
-    All of the ideas added here will be sent to the Council as our response to their consultation. 
-  %ol
+  %ol.walkthrough
     %li
-      Walk around
+      1. Walk around
     %li
-      Have an idea
+      2. Have an idea
     %li
-      Add it here
+      3. Map it
     %li
-      Discuss it
+      4. Discuss it
+  
+  
 
-.colone
+  #intro_text.indent{:style=>"clear: both; padding-top: 1.5em;"}
+    All of the ideas added here will be sent to the Council as our response to 
+  
+    = link_to "their consultation", "/"
+    \. 
+
+#add_your_idea{:style=>"float: right;"}
+  = button_to "Add your idea", new_entity_path
+  
+.colone{:style=>"clear: both;"}
   .box
     %h2
       From the 

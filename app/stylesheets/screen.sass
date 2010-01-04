@@ -33,21 +33,64 @@ body
   a
     :color #00aa99 !important
     :background-color white
+    :padding 0.2em
   a:visited
     :color #00aa99 !important
-    
-  h2
-    em
-      :font-weight bold
+
   .box
     :margin-top 1.5em
     +border-radius(10px)
+    :padding-bottom 1.5em
     
+  #add_your_idea
+    :margin-top -6em
+  #flash
+    :margin-top -3em
+    :float left
+    :font-size 125%    
+    :padding 0.5em
+    +border-radius(10px)
+    :border 0px
+  #flash.notice
+    :color green
+    :background-color #afa
+  #flash.error
+    :color red
+    :background-color #faa
   #intro
-    :background-color #ddffee
+    :background-color #eee
     :margin-top 0
     :padding 3em
+    
+    h2
+      :line-height 200%
+      a
+        :font-weight bold
+        :color black !important
+        :text-decoration none
+        :font-size 125%
+        
+
     +border-radius(3em)
+    .walkthrough
+      :list-style-type decimal !important
+      :list-style-position inside 
+      :margin 0
+      :padding 0
+      :text-indent 0
+      li
+        :list-style-type decimal !important
+        :list-style-position inside 
+        :display inline
+        :font-weight bold
+        :margin 0
+        :padding 0
+        :text-indent 0
+        :background-color #cdc
+        :padding 1em
+        :font-size 100%
+        
+        +column(4)
   #logo
     :padding-top 1.5em
     :margin-left 1.5em
@@ -73,6 +116,7 @@ body
     .page_title
       :margin-left 1.5em
       :display block
+      :font-weight bold
 
   #footer
     :margin-top 1.5em
@@ -99,7 +143,8 @@ body
       +append(2)
     .coltwo
       +column(!col_columns, true)
-    
+    .indent
+      :padding-left 1.5em
 
     form  
       :font-size 150%

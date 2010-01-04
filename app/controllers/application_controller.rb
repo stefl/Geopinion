@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
   def lat_lng_session
     
     if session[:lat].blank? || 1==1
-      session[:lat] = -1.888213
-      session[:lng] = 52.446506
+      session[:lng] = -1.888213
+      session[:lat] = 52.446506
       session[:scale] = 1
     end
   end
