@@ -48,5 +48,5 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-require 'vendor/gems/geoapi/lib/geoapi.rb'
+require File.join(File.dirname(__FILE__), '/../vendor/gems/geoapi/lib/geoapi.rb')
 GeoAPI::GEOAPI_KEY = "p4MIOnORr3"
