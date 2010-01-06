@@ -51,4 +51,4 @@ Rails::Initializer.run do |config|
 end
 
 require File.join(File.dirname(__FILE__), '/../lib/geoapi/lib/geoapi.rb')
-GeoAPI::GEOAPI_KEY = "p4MIOnORr3"
+ENV['GEOAPI_KEY'] = "p4MIOnORr3"
