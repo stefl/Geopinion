@@ -50,7 +50,7 @@
       #content
         = render :partial => "shared/messages"
                   
-        = @content_for_layout
+        = yield
 
       #sidebar
         = yield :sidebar
