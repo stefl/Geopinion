@@ -50,7 +50,7 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-$LOAD_PATH << File.dirname(__FILE__) + "/lib/geoapi"
+$LOAD_PATH << File.dirname(__FILE__) + "../lib/geoapi"
 
 require 'geoapi'
 
