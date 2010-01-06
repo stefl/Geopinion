@@ -10,6 +10,9 @@ class EntitiesController < ResourceController::Base
         puts "Timeout::Error"
         flash[:error] = "Sorry - the service was slow to respond, try reloading the page"
         @entities = []
+      rescue GeoAPI::BadRequest
+        flash[:error] = "Sorry - there's been a problem, try reloading the page"
+        @entities = []
       end
     end
     
@@ -40,7 +43,7 @@ class EntitiesController < ResourceController::Base
     new_action.wants.html{
       setup_map
       
-      @map.center = GoogleMap::Point.new(session[:lng], session[:lat])
+      @map.center = GoogleMap::Point.new(session[:lat], session[:lng])
       @map.double_click_zoom = false
       @map.inject_on_load = 'GEvent.addListener(google_map,"dblclick", function(overlay, latlng) {     
         if (latlng) { 
@@ -65,15 +68,19 @@ class EntitiesController < ResourceController::Base
     end
     
     def create
-      @entity = Entity.create_at_lat_lng(params[:entity])
+      begin
+        puts "Create entity"
+        @entity = Entity.create_at_lat_lng(params[:entity])
+      rescue
+        flash[:error] = "There was a problem adding your idea - please try that again later."
+      end
       
       respond_to do |wants|
         wants.html do
-          unless @entity.blank?
-            flash[:error] = "The entity has been created"
+          unless @entity.blank? || flash[:error]
+            flash[:notice] = "Your idea has been created"
             redirect_to(entity_path(@entity.id))
           else
-            flash[:error] = "It was not possible to create that Entity - please try again."
             redirect_to(new_entity_path)
           end
         end
