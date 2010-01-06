@@ -29,17 +29,17 @@
           = link_to "Geopinion", home_path
 
           %span.locale
-            on Moseley and Kings Heath
-
-
+            on Moseley &amp; Kings Heath
+          - unless @no_idea
+            #add_your_idea{:style=>"float: right;"}
+              = button_to "Add your idea", new_entity_path
         %h1.page_title
-          = unless @breadcrumb.blank?
+          - unless @breadcrumb.blank?
             %span#breadcrumb
               = @breadcrumb
-              &raquo;
-              %br
+              = "&raquo;"
           = page_title
-            
+  
       #content
         = render :partial => "shared/messages"
                   

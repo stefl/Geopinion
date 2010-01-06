@@ -50,4 +50,3 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-ENV['GEOAPI_KEY'] = "p4MIOnORr3"

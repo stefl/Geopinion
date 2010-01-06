@@ -1,0 +1,1 @@
+ENV['GEOAPI_KEY'] = "p4MIOnORr3"
