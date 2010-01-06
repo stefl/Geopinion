@@ -1,9 +1,9 @@
 class BaseController < ApplicationController
   def site_index
     begin
-    setup_post_reader
+      setup_post_reader
     
-    @posts = @reader.response
+      @posts = @reader.response
     rescue 
       flash[:error] = "There was a problem loading the blog"
     end
@@ -11,10 +11,9 @@ class BaseController < ApplicationController
   
   def posts
     begin
-    setup_post_reader
+      setup_post_reader
     
-    @posts = @reader.response
-    render "posts/index"
+      @posts = @reader.response
     rescue 
       flash[:error] = "There was a problem loading the blog"
       redirect_to home_path
@@ -23,10 +22,9 @@ class BaseController < ApplicationController
   
   def post
     begin
-    setup_post_reader
+      setup_post_reader
     
-    @post = @reader.response.first
-    render "posts/show"
+      @post = @reader.response.first
     rescue 
       flash[:error] = "There was a problem loading the blog"
       redirect_to home_path
